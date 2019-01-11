@@ -8,7 +8,13 @@ The function is needed because it is a requirement in the Alexa Skill Verificati
 - request (https://github.com/request/request)
 
 ### Setup in AWS
+The Lambda function requires:
+- Change the URL Parameter in the Code
+    
+      let url = "URL-FOR-API-GATEWAY-HERE";
+
 The Lambda Function does not need any special setup.
+
 
 The API Gateway requires:
 
@@ -29,7 +35,7 @@ The API Gateway requires:
         }
         
 - A HTTP 400 Status Response
-- A mapped Lambda Regex Expression in the follwing format
+- A mapped Lambda Regex Expression in the following format
               
       Bad Request: .*
       
