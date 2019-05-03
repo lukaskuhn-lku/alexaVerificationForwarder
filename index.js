@@ -1,6 +1,9 @@
 const verifier = require('alexa-verifier');
 const request = require('request');
 
+const AWS = require('aws-sdk');
+const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
+ 
 
 const index = function(event, context, callback) {
     console.log("[Index Handler] Request received");
@@ -22,6 +25,24 @@ const index = function(event, context, callback) {
 
             return context.fail("Bad Request: Failed Authentication");
         } else {
+            dynamodb.putItem({
+                TableName: "DBG-DEV-boerse-frankfurt-dynamo_requests_log",
+                Item: {
+                    "date": {
+                        S: Date.now()
+                    },
+                    "req": {
+                        S: body
+                    }  
+                }
+            }, function(err, data){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log("Data saved in DB: " + data);
+                } 
+            });
+
             let url = "https://ffmw0rps5g.execute-api.eu-central-1.amazonaws.com/product-12-2018";
 
             console.log("Alexa Skill Verification Request successful");
