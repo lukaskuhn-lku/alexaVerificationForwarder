@@ -1,4 +1,6 @@
 # Lambda: Alexa Verification Forwarder
+Developed by Lukas Kuhn (lukas.kuhn@deutsche-boerse.com)
+
 This Lambda function is designed to get requests from the Alexa Skill, check their verification (Signature URL and Certificate) and then forward the request if the verification is valid or send a HTTP 400 Bad Request if it is not.
 
 The function is needed because it is a requirement in the Alexa Skill Verification Process to Check if the Requests are valid Alexa requests.
