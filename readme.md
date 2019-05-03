@@ -40,3 +40,6 @@ The API Gateway requires:
       Bad Request: .*
       
   Mapped to the HTTP 400 Status Response with Pass-Through Configuration
+
+### Logging into DynamoDB
+This verification Lambda is also used for logging all incoming requests into a DynamoDB. This data can later be used by the Alexa Analytics Dashboard and Lambda Analytics Function. 
