@@ -25,14 +25,18 @@ const index = function(event, context, callback) {
 
             return context.fail("Bad Request: Failed Authentication");
         } else {
+
+            var date = Date.now().toString();
+            var bodyString = body.toString();
+
             dynamodb.putItem({
                 TableName: "DBG-DEV-boerse-frankfurt-dynamo_requests_log",
                 Item: {
-                    "date": {
-                        S: Date.now()
+                    "Date": {
+                        S: date
                     },
                     "req": {
-                        S: body
+                        S: bodyString
                     }  
                 }
             }, function(err, data){
