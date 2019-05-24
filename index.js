@@ -3,7 +3,9 @@ const request = require('request');
 
 const AWS = require('aws-sdk');
 const dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
- 
+
+process.env.NODE_ENV = 'production';
+const config = require('./config')
 
 const index = function(event, context, callback) {
     console.log("[Index Handler] Request received");
@@ -25,29 +27,10 @@ const index = function(event, context, callback) {
 
             return context.fail("Bad Request: Failed Authentication");
         } else {
-
             var date = Date.now().toString();
             var bodyString = body.toString();
 
-            dynamodb.putItem({
-                TableName: "DBG-DEV-boerse-frankfurt-dynamo_requests_log",
-                Item: {
-                    "Date": {
-                        S: date
-                    },
-                    "req": {
-                        S: bodyString
-                    }  
-                }
-            }, function(err, data){
-                if(err){
-                    console.log(err);
-                }else{
-                    console.log("Data saved in DB: " + data);
-                } 
-            });
-
-            let url = "https://ffmw0rps5g.execute-api.eu-central-1.amazonaws.com/product-12-2018";
+            let url = global.gConfig.gatewayURL.toString(); 
 
             console.log("Alexa Skill Verification Request successful");
 
