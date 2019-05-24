@@ -10,7 +10,7 @@ The function is needed because it is a requirement in the Alexa Skill Verificati
 
 ## Setup in AWS
 The Lambda function requires:
-- Change the URL Parameter to your Lambda API Gateay in the Config
+- Change the URL Parameter to your Lambda API Gateway in the  [```config.json```](./config.json) 
 
 The Lambda Function does not need any special setup.
 
