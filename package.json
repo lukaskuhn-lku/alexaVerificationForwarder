@@ -1,0 +1,23 @@
+{
+  "name": "alexaverificationforwarding",
+  "version": "1.0.0",
+  "description": "This Lambda function is designed to get requests from the Alexa Skill, check their verification (Signature URL and Certificate) and then forward the request if the verification is valid or send a HTTP 400 Bad Request if it is not.",
+  "main": "index.js",
+  "dependencies": {
+    "alexa-verifier": "^2.0.1",
+    "aws-sdk": "^2.462.0",
+    "lodash": "^4.17.11",
+    "pipe": "^1.1.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC"
+}

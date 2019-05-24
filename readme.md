@@ -1,22 +1,18 @@
 # Lambda: Alexa Verification Forwarder
-Developed by Lukas Kuhn (lukas.kuhn@deutsche-boerse.com)
 
 This Lambda function is designed to get requests from the Alexa Skill, check their verification (Signature URL and Certificate) and then forward the request if the verification is valid or send a HTTP 400 Bad Request if it is not.
 
 The function is needed because it is a requirement in the Alexa Skill Verification Process to Check if the Requests are valid Alexa requests.
 
-### Using
+## Requirements
 - alexa-verifier (https://github.com/mreinstein/alexa-verifier)
 - request (https://github.com/request/request)
 
-### Setup in AWS
+## Setup in AWS
 The Lambda function requires:
-- Change the URL Parameter in the Code
-    
-      let url = "URL-FOR-API-GATEWAY-HERE";
+- Change the URL Parameter to your Lambda API Gateay in the Config
 
 The Lambda Function does not need any special setup.
-
 
 The API Gateway requires:
 
@@ -43,5 +39,8 @@ The API Gateway requires:
       
   Mapped to the HTTP 400 Status Response with Pass-Through Configuration
 
-### Logging into DynamoDB
-This verification Lambda is also used for logging all incoming requests into a DynamoDB. This data can later be used by the Alexa Analytics Dashboard and Lambda Analytics Function. 
+## Further usage
+### Logging 
+This Verification Forwarder could also be used to log any incoming requests to later analyze them. 
+
+For further information contact me at kuhn-lukas@arcor.de
